@@ -3,7 +3,8 @@ from flask import Flask, request, render_template
 import pickle 
 
 # Path to the saved model file
-model_pickle = 'regression_model.pkl'
+model_pickle = 'models/regression_model.pkl'
+template_path = 'template.html'
 
 # Initializing the Flask application
 app = Flask(__name__) 
@@ -15,7 +16,7 @@ model = pickle.load(open(model_pickle, 'rb'))
 # Defining the home route to render the HTML template
 @app.route('/')
 def home():
-    return render_template('template.html') 
+    return render_template(template_path) 
 
 
 # Defining the route to handle form submission and predict the output
@@ -34,7 +35,7 @@ def predict():
     predicted_y = np.round(prediction, 2)
 
     # Rendering the result on the HTML template
-    return render_template('template.html', prediction_text='Predicted Salary: ${}'.format(predicted_y[0]))
+    return render_template(template_path, prediction_text='Predicted Salary: ${}'.format(predicted_y[0]))
 
 
 # Running the Flask app

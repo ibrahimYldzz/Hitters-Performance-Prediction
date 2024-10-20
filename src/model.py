@@ -98,6 +98,6 @@ gbm_final = np.sqrt(mean_squared_error(y_test, y_pred))
 print(gbm_final)
 
 # Saving the trained model to a file using pickle
-pickle.dump(gbm_tuned, open('regression_model.pkl','wb'))
+pickle.dump(gbm_tuned, open('models/regression_model.pkl','wb'))
 
 print("Model has been created.")
